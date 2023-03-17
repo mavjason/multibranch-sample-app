@@ -15,6 +15,7 @@ pipeline {
         sh "echo hello >> README.md"
         sh "git clone ${env.WORKSPACE} ${env.WORKSPACE_TMP}/GitleaksDir"
         sh "cd ${env.WORKSPACE_TMP}/GitleaksDir && git reset --hard ${GIT_COMMIT}"
+        println scm
       }
     }
   }
