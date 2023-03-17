@@ -10,15 +10,11 @@ pipeline {
         println "GitBranch ${env.GIT_BRANCH}"
         println "workspace path ${env.WORKSPACE}"
         println "workspace@tmp path ${env.WORKSPACE_TMP}"
+        sh "rm ${env.WORKSPACE}/this_will_be_deleted"
+        sh "touch ${env.WORKSPACE}/new_file"
+        sh "echo hello >> README.md"
+        sh "git clone ${env.WORKSPACE} ${env.WORKSPACE_TMP}/GitleaksDir"
       }
-    }
-  }
-  post {
-    always {
-        junit(
-          allowEmptyResults: true, 
-          testResults: '**/build/test-results/test/*.xml'
-        )
     }
   }
 }
