@@ -7,6 +7,10 @@ pipeline {
     stage('Build') {
       steps {
         sh './gradlew clean check --no-daemon'
+        println "GitCommit ${env.GIT_COMMIT}"
+        println "GitBranch ${env.GIT_BRANCH}"
+        println "workspace path ${env.WORKSPACE}"
+        println "workspace@tmp path ${env.WORKSPACE_TMP}"
       }
     }
   }
