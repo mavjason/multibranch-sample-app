@@ -14,7 +14,7 @@ pipeline {
         sh "touch ${env.WORKSPACE}/new_file"
         sh "echo hello >> README.md"
         sh "git clone ${env.WORKSPACE} ${env.WORKSPACE_TMP}/GitleaksDir"
-        sh "git branch ${env.WORKSPACE_TMP}/GitleaksDir"
+        sh "cd ${env.WORKSPACE_TMP}/GitleaksDir && git reset --hard ${GIT_COMMIT}"
       }
     }
   }
